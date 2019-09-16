@@ -44,13 +44,13 @@ def make_move(row, col, val)
 	$board_array[row][col] = val
 end
 
-def get_move
+def get_input_move
 	puts 'Where do you want to move?'
 	move = gets.strip.upcase.split('')
 
 	unless valid_move(move)
 		puts "Invalid move. Valid moves: #{$moves_array.join(', ')}."
-		move = get_move
+		move = get_input_move
 	end
 
 	return move
@@ -117,7 +117,7 @@ end
 # Main game loop
 loop do
 	# Player move
-	move = get_move
+	move = get_input_move
 	make_move(ROWS[move[1]], COLUMNS[move[0]], player)
 
 	if winner(moves_count)
